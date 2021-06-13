@@ -1,0 +1,15 @@
+%arrowPosition {
+  width: 2em;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
+
+%pointer {
+  cursor: pointer;
+}
+
+%removeBullets {
+  list-style-type: none;
+  padding: 0;
+}

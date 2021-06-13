@@ -1,0 +1,62 @@
+@import '../utils/mixins';
+@import '../utils/placeholders';
+@import '../utils/variables';
+
+.deviceImage {
+  @include squareSize($deviceImageSize);
+  position: relative;
+  overflow: hidden;
+}
+
+.imageBox {
+  @include flexbox(row);
+  @include squareSize($deviceImageSize);
+  position: relative;
+  transition: transform 0.5s;
+}
+
+.inputLeft {
+  @extend %arrowPosition;
+  left: 0;
+}
+
+.inputRight {
+  @extend %arrowPosition;
+  right: 0;
+}
+
+.image {
+  @include flexbox(row, nowrap, center, center);
+  @include squareSize($deviceImageSize);
+  flex-shrink: 0;
+}
+
+.table {
+  @include flexbox($direction: column, $cross: center);
+  width: 100%;
+  margin-top: 2em;
+  margin-bottom: 10em;
+  position: relative;
+
+  th {
+    div {
+      margin: auto;
+    }
+  }
+
+  tr {
+    td:first-child {
+      text-align: left;
+    }
+
+    td {
+      padding: 15px;
+      border-bottom: 1px solid $tableColor;
+      text-align: center;
+
+      img {
+        width: 1.5em;
+      }
+    }
+  }
+}

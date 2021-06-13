@@ -1,0 +1,156 @@
+@import '../utils/mixins';
+@import '../utils/placeholders';
+@import '../utils/variables';
+
+.search {
+  @include flexbox($direction: column, $cross: center);
+  width: 100%;
+  height: 100%;
+}
+
+.searchContent {
+  @include flexbox($direction: column, $cross: center);
+  width: 50%;
+  height: max-content;
+  position: relative;
+  z-index: 2;
+}
+
+.searchInput {
+  @include flexbox($direction: row, $main: center);
+  height: 3em;
+  width: 100%;
+  
+  :focus {
+    outline: none;
+  }
+
+  input {
+    width: 100%;
+    font-size: 100%;
+    padding-left: 0.5em;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+}
+
+.searchRecommendation {
+  @include flexbox($direction: column, $main: center);
+  width: 100%;
+  position: absolute;
+  top: 3em;
+  background-color: $whiteColor;
+
+  > ul {
+    @include flexbox($direction: column, $cross: center);
+    @extend %removeBullets;
+    width: 100%;
+    height: 7em;
+    max-height: 200;
+    overflow: auto;
+    border: solid 1px;
+    border-top: none;
+    margin: 0;
+    padding-bottom: 1em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    .searchLoading {
+      @include flexbox(column, nowrap, center, center);
+      height: 100%;
+      padding-top: 1em;
+
+      > img {
+        height: 25px;
+        width: 25px;
+        align-self: center;
+      }
+    }
+
+    li {
+      @include flexbox($direction: row, $cross: center);
+      @extend %pointer;
+      width: 100%;
+      padding: 0.5em;
+
+      > img {
+        width: 6em;
+        align-self: flex-start;
+      }
+    }
+
+    > img {
+      height: 25px;
+      width: 25px;
+    }
+
+    > div {
+      display: flex;
+
+      button {
+        @extend %pointer;
+        height: 25px;
+        width: 50px;
+        background-color: $whiteColor;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.searchCompare {
+  @include flexbox($direction: column, $cross: center);
+  width: 100%;
+}
+
+.searchCompareContent {
+  @include flexbox(column, nowrap, space-between, stretch);
+  width: 100%;
+  border: solid $mainColor 0.2em;
+  border-radius: 5px;
+
+  > ul {
+    @include flexbox($direction: row, $wrap: wrap, $main: flex-start);
+    @extend %removeBullets;
+    width: 100%;
+    height: max-content;
+
+    li {
+      @include flexbox(row, nowrap, flex-start, center);
+      width: 50%;
+      padding-right: 1em;
+
+      img {
+        width: 6em;
+        align-self: flex-start;
+      }
+
+      div {
+        width: 60%;
+      }
+
+      input {
+        padding-left: 0.25em;
+        width: 1.75em;
+      }
+    }
+  }
+}
+
+.searchCompareButton {
+  @include flexbox(row, center, center);
+  @extend %pointer;
+  margin: 0.2em 3em;
+  padding: 0.2em;
+  background-color: $mainColor;
+  border: none;
+  border-radius: 5px;
+  color: $whiteColor;
+  font-size: 2em;
+}
+
+.error {
+  color: $redColor;
+  align-self: center;
+  padding-bottom: 0.5em;
+}
